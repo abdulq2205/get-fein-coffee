@@ -1,14 +1,38 @@
 {
-  "beverages": [
-    { "id": "b1", "name": "Get Fein Espresso", "description": "Double shot of our signature aesthetic blend.", "price": "$3.50" },
-    { "id": "b2", "name": "Matcha Latte", "description": "Ceremonial grade matcha from Uji, Japan, lightly sweetened.", "price": "$5.50" },
-    { "id": "b3", "name": "Cortado", "description": "Equal parts espresso and perfectly textured micro-foam.", "price": "$4.00" },
-    { "id": "b4", "name": "Iced Americano", "description": "Espresso over water and ice for a crisp, clean finish.", "price": "$3.75" },
-    { "id": "b5", "name": "Pour Over", "description": "Rotating single-origin beans, precision brewed.", "price": "$6.00" }
+  "espresso": [
+    { "id": "e1", "name": "Espresso", "description": "Double shot, single origin. Clean, bright, and present.", "price": "$3.50" },
+    { "id": "e2", "name": "Americano", "description": "Espresso diluted with hot water. Clarity in a cup.", "price": "$4.00" },
+    { "id": "e3", "name": "Flat White", "description": "Two ristretto shots, microfoam. Silk and intensity.", "price": "$5.00" },
+    { "id": "e4", "name": "Cortado", "description": "Equal espresso and steamed milk. Balance perfected.", "price": "$5.50" },
+    { "id": "e5", "name": "Cappuccino", "description": "Rich espresso, thick milk foam. Classic form.", "price": "$5.50" },
+    { "id": "e6", "name": "Latte", "description": "Smooth espresso, steamed milk, light foam.", "price": "$5.75" },
+    { "id": "e7", "name": "Oat Milk Latte", "description": "Our house oat blend. Naturally sweet, creamy.", "price": "$6.25" }
   ],
-  "culinary": [
-    { "id": "c1", "name": "Almond Croissant", "description": "Flaky, twice-baked pastry with almond frangipane filling.", "price": "$4.50" },
-    { "id": "c2", "name": "Avocado Smørrebrød", "description": "Danish-style open faced sandwich on rye, smashed avocado, chili oil.", "price": "$11.00" },
-    { "id": "c3", "name": "Matcha Pound Cake", "description": "Dense, earthy matcha infused sponge cake slice.", "price": "$5.00" }
+  "filter": [
+    { "id": "f1", "name": "Batch Brew", "description": "House blend, brewed every 30 minutes. Never stale.", "price": "$3.75" },
+    { "id": "f2", "name": "Aeropress", "description": "Immersion brewed. Full body, low acidity.", "price": "$6.00" },
+    { "id": "f3", "name": "Chemex", "description": "A clean pour for slow mornings. For two.", "price": "$9.00" }
+  ],
+  "cold": [
+    { "id": "co1", "name": "Cold Bloom", "description": "Cold brew, oat milk, wildflower honey.", "price": "$7.00" },
+    { "id": "co2", "name": "Iced Latte", "description": "Double shot over ice, milk of your choice.", "price": "$5.75" },
+    { "id": "co3", "name": "Iced Matcha Latte", "description": "Ceremonial grade matcha, oat milk.", "price": "$6.50" },
+    { "id": "co4", "name": "Sparkling Espresso", "description": "Chilled espresso over sparkling water. A revelation.", "price": "$6.00" }
+  ],
+  "tea": [
+    { "id": "t1", "name": "Darjeeling First Flush", "description": "Light and floral. Brewed at 85°C.", "price": "$4.50" },
+    { "id": "t2", "name": "Moroccan Mint", "description": "Spearmint and green tea. Refreshing and clean.", "price": "$4.50" },
+    { "id": "t3", "name": "Masala Chai Latte", "description": "House spice blend, oat milk, maple.", "price": "$6.00" }
+  ],
+  "food": [
+    { "id": "fd1", "name": "Grain Bowl", "description": "Quinoa, roasted beets, tahini dressing, soft egg.", "price": "$14.00" },
+    { "id": "fd2", "name": "Ricotta Toast", "description": "Whipped ricotta, fig jam, toasted walnuts.", "price": "$10.00" },
+    { "id": "fd3", "name": "Soft Eggs & Toast", "description": "Slow-cooked eggs, cultured butter, seeded bread.", "price": "$11.00" }
+  ],
+  "pastry": [
+    { "id": "p1", "name": "Morning Bun", "description": "Laminated dough, orange zest, cinnamon sugar.", "price": "$4.50" },
+    { "id": "p2", "name": "Kouign-Amann", "description": "Caramelized, buttery, and deeply satisfying.", "price": "$5.00" },
+    { "id": "p3", "name": "Cardamom Shortbread", "description": "Delicate, lightly spiced. Made in-house daily.", "price": "$3.50" },
+    { "id": "p4", "name": "Seasonal Tart", "description": "Pastry cream, market fruit. Changes weekly.", "price": "$6.50" }
   ]
 }

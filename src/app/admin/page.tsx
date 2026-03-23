@@ -10,9 +10,15 @@ type MenuItem = {
   price: string;
 };
 
-type MenuData = {
-  beverages: MenuItem[];
-  culinary: MenuItem[];
+type MenuData = Record<string, MenuItem[]>;
+
+const categoryLabels: Record<string, string> = {
+  espresso: 'Espresso',
+  filter: 'Filter',
+  cold: 'Cold',
+  tea: 'Tea',
+  food: 'Food',
+  pastry: 'Pastry',
 };
 
 export default function AdminDashboard() {
@@ -29,9 +35,10 @@ export default function AdminDashboard() {
       });
   }, []);
 
-  const handleItemChange = (category: 'beverages' | 'culinary', index: number, field: keyof MenuItem, value: string) => {
+  const handleItemChange = (category: string, index: number, field: keyof MenuItem, value: string) => {
     if (!data) return;
     const newData = { ...data };
+    newData[category] = [...newData[category]];
     newData[category][index] = { ...newData[category][index], [field]: value };
     setData(newData);
   };
@@ -50,71 +57,49 @@ export default function AdminDashboard() {
       } else {
         setStatus('Failed to save changes.');
       }
-    } catch (e) {
+    } catch {
       setStatus('Error occurred while saving.');
     }
   };
 
   if (loading || !data) {
-    return <div className="container section text-center">Loading Admin Panel...</div>;
+    return <div className="container" style={{padding: '10rem 0', textAlign: 'center'}}>Loading Admin Panel...</div>;
   }
 
   return (
     <div className={styles.adminContainer}>
       <header className={styles.header}>
-        <h1 className={styles.title}>Data Management Dashboard</h1>
+        <h1 className={styles.title}>Data Management</h1>
         <button className={styles.saveBtn} onClick={handleSave}>Publish Changes</button>
       </header>
 
       {status && <div className={styles.statusMessage}>{status}</div>}
 
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Beverages Menu</h2>
-        <div className={styles.itemGrid}>
-          {data.beverages.map((item, i) => (
-            <div key={item.id} className={styles.itemCard}>
-              <div className={styles.row}>
-                <div className={styles.inputGroup}>
-                  <label>Name</label>
-                  <input className={styles.input} value={item.name} onChange={(e) => handleItemChange('beverages', i, 'name', e.target.value)} />
+      {Object.keys(data).map((category) => (
+        <section key={category} className={styles.section}>
+          <h2 className={styles.sectionTitle}>{categoryLabels[category] || category}</h2>
+          <div className={styles.itemGrid}>
+            {data[category].map((item: MenuItem, i: number) => (
+              <div key={item.id} className={styles.itemCard}>
+                <div className={styles.row}>
+                  <div className={styles.inputGroup}>
+                    <label>Name</label>
+                    <input className={styles.input} value={item.name} onChange={(e) => handleItemChange(category, i, 'name', e.target.value)} />
+                  </div>
+                  <div className={styles.inputGroup}>
+                    <label>Price</label>
+                    <input className={styles.input} value={item.price} onChange={(e) => handleItemChange(category, i, 'price', e.target.value)} />
+                  </div>
                 </div>
                 <div className={styles.inputGroup}>
-                  <label>Price</label>
-                  <input className={styles.input} value={item.price} onChange={(e) => handleItemChange('beverages', i, 'price', e.target.value)} />
+                  <label>Description</label>
+                  <input className={styles.input} value={item.description} onChange={(e) => handleItemChange(category, i, 'description', e.target.value)} />
                 </div>
               </div>
-              <div className={styles.inputGroup}>
-                <label>Description</label>
-                <input className={styles.input} value={item.description} onChange={(e) => handleItemChange('beverages', i, 'description', e.target.value)} />
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Culinary Menu</h2>
-        <div className={styles.itemGrid}>
-          {data.culinary.map((item, i) => (
-            <div key={item.id} className={styles.itemCard}>
-              <div className={styles.row}>
-                <div className={styles.inputGroup}>
-                  <label>Name</label>
-                  <input className={styles.input} value={item.name} onChange={(e) => handleItemChange('culinary', i, 'name', e.target.value)} />
-                </div>
-                <div className={styles.inputGroup}>
-                  <label>Price</label>
-                  <input className={styles.input} value={item.price} onChange={(e) => handleItemChange('culinary', i, 'price', e.target.value)} />
-                </div>
-              </div>
-              <div className={styles.inputGroup}>
-                <label>Description</label>
-                <input className={styles.input} value={item.description} onChange={(e) => handleItemChange('culinary', i, 'description', e.target.value)} />
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+            ))}
+          </div>
+        </section>
+      ))}
     </div>
   );
 }

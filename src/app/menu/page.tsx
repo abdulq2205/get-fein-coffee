@@ -1,43 +1,65 @@
+"use client";
+
+import { useState } from 'react';
 import menuData from '@/data/menu.json';
 import styles from './page.module.css';
 
-export default function MenuPage() {
-  return (
-    <div className="section container">
-      <div className="text-center">
-        <h1 className={styles.pageTitle}>Our Menu</h1>
-        <p className={styles.pageSubtitle}>Curated beverages and culinary items.</p>
-      </div>
-      
-      <section className={styles.categorySection}>
-        <h2 className={styles.categoryTitle}>Beverages</h2>
-        <div className={styles.menuGrid}>
-          {menuData.beverages.map((item) => (
-            <div key={item.id} className={styles.menuCard}>
-              <div className={styles.cardHeader}>
-                <span className={styles.itemName}>{item.name}</span>
-                <span className={styles.itemPrice}>{item.price}</span>
-              </div>
-              <p className={styles.itemDescription}>{item.description}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+type MenuItem = {
+  id: string;
+  name: string;
+  description: string;
+  price: string;
+};
 
-      <section className={styles.categorySection}>
-        <h2 className={styles.categoryTitle}>Culinary</h2>
-        <div className={styles.menuGrid}>
-          {menuData.culinary.map((item) => (
-            <div key={item.id} className={styles.menuCard}>
-              <div className={styles.cardHeader}>
-                <span className={styles.itemName}>{item.name}</span>
-                <span className={styles.itemPrice}>{item.price}</span>
-              </div>
-              <p className={styles.itemDescription}>{item.description}</p>
+const categories = [
+  { key: 'espresso', label: 'Espresso' },
+  { key: 'filter', label: 'Filter' },
+  { key: 'cold', label: 'Cold' },
+  { key: 'tea', label: 'Tea' },
+  { key: 'food', label: 'Food' },
+  { key: 'pastry', label: 'Pastry' },
+];
+
+export default function MenuPage() {
+  const [activeCategory, setActiveCategory] = useState('espresso');
+  const items: MenuItem[] = (menuData as Record<string, MenuItem[]>)[activeCategory] || [];
+
+  return (
+    <div className="container">
+      <header className={styles.pageHeader}>
+        <span className={styles.pageLabel}>The Sensory Index</span>
+        <h1 className={styles.pageTitle}>What we make.</h1>
+      </header>
+
+      <div className={styles.tabs}>
+        {categories.map((cat) => (
+          <button
+            key={cat.key}
+            className={`${styles.tab} ${activeCategory === cat.key ? styles.tabActive : ''}`}
+            onClick={() => setActiveCategory(cat.key)}
+          >
+            {cat.label}
+          </button>
+        ))}
+      </div>
+
+      <div className={styles.menuList}>
+        {items.map((item) => (
+          <div key={item.id} className={styles.menuItem}>
+            <div className={styles.itemInfo}>
+              <div className={styles.itemName}>{item.name}</div>
+              <div className={styles.itemDesc}>{item.description}</div>
             </div>
-          ))}
-        </div>
-      </section>
+            <span className={styles.itemPrice}>{item.price}</span>
+          </div>
+        ))}
+      </div>
+
+      <div className={styles.sourcing}>
+        <p className={styles.sourcingText}>
+          All beans are sourced through direct trade relationships. We know the farms, and they know us.
+        </p>
+      </div>
     </div>
   );
 }

@@ -1,85 +1,328 @@
 .hero {
   position: relative;
-  height: 80vh;
-  min-height: 600px;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
   overflow: hidden;
-  color: var(--color-pure-white);
-  background-color: var(--color-deep-black); 
+  background-color: var(--roasted-bean);
 }
 
-.heroBackground {
+.heroBg {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.6; /* Darken for text readability */
+  inset: 0;
   z-index: 1;
-  will-change: transform;
+}
+
+.heroBgImage {
+  object-fit: cover;
+  opacity: 0.5;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(26,26,26,0.3) 0%, rgba(26,26,26,0.6) 100%);
+  z-index: 2;
 }
 
 .heroContent {
   position: relative;
-  z-index: 2;
-  max-width: 800px;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 8rem 0 3rem;
 }
 
-.heroTitle {
+.heroTextGet {
   font-family: var(--font-serif);
-  font-weight: 900;
-  font-size: clamp(3rem, 8vw, 6rem);
-  line-height: 1;
-  margin-bottom: var(--spacing-lg);
-  color: var(--color-pure-white);
-  text-transform: uppercase;
-}
-
-.heroSubtitle {
-  font-family: var(--font-sans);
-  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-size: clamp(6rem, 18vw, 14rem);
   font-weight: 400;
-  margin-bottom: var(--spacing-2xl);
-  color: var(--color-off-white);
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(245, 242, 237, 0.7);
+  user-select: none;
 }
 
-.instagramFeed {
-  background-color: var(--color-pure-white);
+.heroTextFein {
+  font-family: var(--font-serif);
+  font-size: clamp(6rem, 18vw, 14rem);
+  font-weight: 400;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(245, 242, 237, 0.7);
+  text-align: right;
+  user-select: none;
 }
 
-.grid {
+.heroMiddle {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.heroProposition {
+  max-width: 320px;
+  text-align: right;
+}
+
+.heroProposition p {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--fein-cream);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.heroCta {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--fein-cream);
+  padding: 0.6rem 1.5rem;
+  border: 1px solid rgba(245, 242, 237, 0.5);
+  border-radius: 999px;
+  transition: all 0.3s ease;
+}
+
+.heroCta:hover {
+  background: rgba(245, 242, 237, 0.15);
+  color: var(--fein-cream);
+  transform: scale(0.97);
+}
+
+.heroBottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.scrollText {
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(245, 242, 237, 0.5);
+}
+
+.scrollLine {
+  width: 1px;
+  height: 40px;
+  background: rgba(245, 242, 237, 0.3);
+}
+
+/* Ritual Section */
+.ritual {
+  padding: 8rem 0;
+  background-color: var(--fein-cream);
+}
+
+.ritualContent {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2px; /* Instagram-like minimal gap */
-  margin-top: var(--spacing-2xl);
+  grid-template-columns: 1fr;
+  gap: 3rem;
 }
 
-.gridItem {
-  position: relative;
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
-  background-color: var(--color-gray-border);
+@media (min-width: 768px) {
+  .ritualContent {
+    grid-template-columns: 1.2fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+}
+
+.ritualHeadline {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.15;
+  color: var(--roasted-bean);
+}
+
+.ritualBody p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+.ritualLink {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--sienna-clay);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color 0.3s ease;
+}
+
+.ritualLink:hover {
+  color: var(--roasted-bean);
+}
+
+/* Signatures Section */
+.signatures {
+  padding: 6rem 0;
+  background-color: var(--fein-cream);
+}
+
+.sigHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 3rem;
+}
+
+.sigTitle {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--roasted-bean);
+}
+
+.sigLink {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--roasted-bean);
+  transition: color 0.3s ease;
+}
+
+.sigLink:hover {
+  color: var(--sienna-clay);
+}
+
+.sigGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .sigGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.sigCard {
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.5rem;
   cursor: pointer;
 }
 
-.gridImage {
+.sigImageWrap {
+  position: relative;
   width: 100%;
-  height: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  background-color: rgba(26, 26, 26, 0.05);
+}
+
+.sigImage {
   object-fit: cover;
-  transition: transform var(--transition-normal);
-  will-change: transform;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.gridItem:hover .gridImage {
-  transform: scale(1.05); /* Hardware-accelerated micro-interaction */
+.sigCard:hover .sigImage {
+  transform: scale(1.05);
 }
 
-@media (max-width: 768px) {
-  .heroTitle {
-    line-height: 1.1;
+.sigName {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  margin-bottom: 0.25rem;
+  color: var(--roasted-bean);
+}
+
+.sigDesc {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.sigPrice {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--roasted-bean);
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Instagram Feed */
+.instagram {
+  padding: 6rem 0;
+  background-color: var(--fein-cream);
+}
+
+.instaHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2rem;
+}
+
+.instaTitle {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.instaLink {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--sienna-clay);
+  transition: color 0.3s ease;
+}
+
+.instaLink:hover {
+  color: var(--roasted-bean);
+}
+
+.instaGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px;
+}
+
+@media (min-width: 768px) {
+  .instaGrid {
+    grid-template-columns: repeat(4, 1fr);
   }
+}
+
+.instaItem {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.instaImage {
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.instaItem:hover .instaImage {
+  transform: scale(1.05);
 }
