@@ -1,0 +1,14 @@
+{
+  "beverages": [
+    { "id": "b1", "name": "Get Fein Espresso", "description": "Double shot of our signature aesthetic blend.", "price": "$3.50" },
+    { "id": "b2", "name": "Matcha Latte", "description": "Ceremonial grade matcha from Uji, Japan, lightly sweetened.", "price": "$5.50" },
+    { "id": "b3", "name": "Cortado", "description": "Equal parts espresso and perfectly textured micro-foam.", "price": "$4.00" },
+    { "id": "b4", "name": "Iced Americano", "description": "Espresso over water and ice for a crisp, clean finish.", "price": "$3.75" },
+    { "id": "b5", "name": "Pour Over", "description": "Rotating single-origin beans, precision brewed.", "price": "$6.00" }
+  ],
+  "culinary": [
+    { "id": "c1", "name": "Almond Croissant", "description": "Flaky, twice-baked pastry with almond frangipane filling.", "price": "$4.50" },
+    { "id": "c2", "name": "Avocado Smørrebrød", "description": "Danish-style open faced sandwich on rye, smashed avocado, chili oil.", "price": "$11.00" },
+    { "id": "c3", "name": "Matcha Pound Cake", "description": "Dense, earthy matcha infused sponge cake slice.", "price": "$5.00" }
+  ]
+}
